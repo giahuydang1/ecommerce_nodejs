@@ -28,6 +28,17 @@ class ProductController {
         }).send(res)
     }
 
+    //update product
+    updateProduct = async(req, res, next) => {
+        new SuccessResponse({
+            message: 'Update product success!',
+            metadata: await ProductServiceV2.updateProduct(req.body.product_type, req.params.productId, {
+                ...req.body,
+                product_shop: req.user.userId
+            })
+        }).send(res)
+    }
+
     publishProductByShop = async(req, res, next) => {
         new SuccessResponse({
             message: 'publishProductByShop success!',
@@ -77,6 +88,22 @@ class ProductController {
         new SuccessResponse({
             message: 'Get list getListSearchProduct success!',
             metadata: await ProductServiceV2.searchProducts(req.params)
+        }).send(res)
+    }
+
+    findAllProducts = async(req, res, next) => {
+        new SuccessResponse({
+            message: 'Get list findAllProducts success!',
+            metadata: await ProductServiceV2.findAllProducts(req.query)
+        }).send(res)
+    }
+
+    findProduct = async(req, res, next) => {
+        new SuccessResponse({
+            message: 'Get list findProduct success!',
+            metadata: await ProductServiceV2.findProduct({
+                product_id: req.params.product_id
+            })
         }).send(res)
     }
     // End Query
