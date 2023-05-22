@@ -27,11 +27,11 @@ const removeUndefinedObject = obj => {
 const updateNestedObjectParser = obj => {
     console.log(`[1]::`, obj);
     const final = {}
-    Object.keys(obj).forEach(k => {
+    Object.keys(obj || {}).forEach(k => {
         console.log(`[3]`, k);
         if(typeof obj[k] === 'object' && !Array.isArray(obj[k])){
             const response = updateNestedObjectParser(obj[k])
-            Object.keys(response).forEach(a => {
+            Object.keys(response || {}).forEach(a => {
                 final[`${k}.${a}`] = response[a]
             })
         }else{
