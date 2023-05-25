@@ -17,7 +17,7 @@ var discountSchema = new Schema({
     discount_max_uses: { type: Number, required: true }, // so luong discount duoc ap dung
     discount_uses_count: { type: Number, required: true }, // so discount da su dung
     discount_users_used: { type: Array, default: [] }, // ai da su dung
-    discount_max_uses_per_use: { type: Number, required: true }, // so luong cho phep toi da duoc su dung moi user
+    discount_max_uses_per_user: { type: Number, required: true }, // so luong cho phep toi da duoc su dung moi user
     discount_min_order_value: { type: Number, required: true },
     discount_shopId: { type: Schema.Types.ObjectId, ref: 'Shop' },
     discount_is_active: { type: Boolean, default: true },
